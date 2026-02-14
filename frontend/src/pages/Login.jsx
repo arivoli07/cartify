@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,25 +8,16 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "http://localhost:9092/api/auth/login",
-        {
-          email,
-          password,
-        }
-      );
-
-      // backend returns token as plain string
-      localStorage.setItem("token", response.data);
-
-      alert("Login successful");
-      navigate("/products");
-    } catch (error) {
-      console.error(error);
-      alert("Invalid credentials");
-    }
+    const userName = email.trim() || "Demo User";
+    localStorage.setItem("token", "demo-token");
+    localStorage.setItem(
+      "cartify_user",
+      JSON.stringify({
+        username: userName,
+        email: email.trim() || "demo@cartify.local",
+      })
+    );
+    navigate("/products");
   };
 
   return (

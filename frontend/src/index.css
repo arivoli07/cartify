@@ -593,3 +593,16 @@ a {
     width: 100%;
   }
 }
+ 
+@media (max-width: 600px) { 
+  .product-grid { 
+    grid-template-columns: 1fr; 
+    justify-content: stretch; 
+  } 
+  .product-card { 
+    width: 100%; 
+  } 
+  .product-media { 
+    height: 180px; 
+  } 
+} 
