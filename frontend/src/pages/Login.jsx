@@ -17,6 +17,9 @@ function Login() {
         email: email.trim() || "demo@cartify.local",
       })
     );
+    for (const key of Object.keys(localStorage)) {
+      if (key.indexOf("cartify_cart_") === 0) localStorage.removeItem(key);
+    }
     navigate("/products");
   };
 
